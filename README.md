@@ -30,11 +30,11 @@ The two modules are connected: mastering a technique in Practice Mode unlocks a 
 
 | Name   | Role                                                                                   |
 | ------ | -------------------------------------------------------------------------------------- |
-| Farida | Team Lead — Practice Mode (frontend) & Think-Pause (frontend, backend, AI integration) |
-| [Name] | [Role — to confirm]                                                                    |
-| [Name] | [Role — to confirm]                                                                    |
-| [Name] | [Role — to confirm]                                                                    |
-| [Name] | [Role — to confirm]                                                                    |
+| Farida | Team Lead — Practice Mode (frontend) & Think-Pause (backend, AI integration) |
+| Marie | Co-Lead - Build the bank of real/AI content for Practice Mode                                                                  |
+| Gagan | Think_Pause frontend developemnt; Build the bank of real/AI content for Practice Mode                                                                  |
+| David | Document the manipulation technique behind each piece of content                                                                  |
+                                                                   
 
 ---
 
