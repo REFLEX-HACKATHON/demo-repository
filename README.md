@@ -32,9 +32,8 @@ The two modules are connected: mastering a technique in Practice Mode unlocks a 
 | ------ | -------------------------------------------------------------------------------------- |
 | Farida | Team Lead — Practice Mode (frontend) & Think-Pause (backend, AI integration) |
 | Marie | Co-Lead - Build the bank of real/AI content for Practice Mode                                                                  |
-| Gagan | Think_Pause frontend developemnt; Build the bank of real/AI content for Practice Mode                                                                  |
-| David | Document the manipulation technique behind each piece of content                                                                  |
-                                                                   
+| Gagan | Think_Pause frontend developemnt
+                          
 
 ---
 
@@ -97,7 +96,7 @@ pip install -r requirements.txt
 Create a `.env` file (not committed to Git) with:
 
 ```
-GEMINI_API_KEY=your_key_here
+GROQ_API_KEY=your_key_here
 ```
 
 Then run:
