@@ -20,7 +20,7 @@ An interactive puzzle-game where users are shown a mix of real and AI-generated 
 
 A practical, AI-guided tool where users paste a real message, post, or AI response they've encountered, and receive a guided evaluation using the same manipulation-technique categories learned in Practice Mode. It never gives a blunt true/false verdict — instead, it returns a confidence level, detected signals, a neutral explanation, and reflective questions.
 
-The two modules are connected: mastering a technique in Practice Mode unlocks a visible skill badge, which Think-Pause recognizes when that same technique appears in a real message — turning game progress into a tangible, applicable skill.
+The two modules are connected: mastering a technique in Practice Mode unlocks a visible skill badge, which Think-Pause recognizes when that same technique appears in a real message — making the game's progress tangibly useful rather than an abstract score.
 
 **Scope for this MVP:** text and image content only (no video analysis).
 
@@ -28,46 +28,52 @@ The two modules are connected: mastering a technique in Practice Mode unlocks a 
 
 ## Team
 
-| Name   | Role                                                                                   |
-| ------ | -------------------------------------------------------------------------------------- |
-| Farida | Team Lead — Practice Mode (frontend) & Think-Pause (backend, AI integration) |
-| Marie | Co-Lead - Build the bank of real/AI content for Practice Mode                                                                  |
-| Gagan | Think_Pause frontend developemnt
-                          
+| Name   | Role                                                        |
+| ------ | ----------------------------------------------------------- |
+| Farida | Team Lead — Practice Mode integration, Think-Pause backend & AI integration |
+| Gagan  | Practice Mode & Think-Pause frontend (Vite/React)            |
+| Marie  | Co-Lead - Content bank (real/AI content, Supabase storage)              |                            
 
 ---
 
 ## Tech Stack
 
-| Layer                | Tools                                    |
-| -------------------- | ---------------------------------------- |
-| Frontend             | Next.js, React, TypeScript, Tailwind CSS |
-| Backend              | FastAPI, Pydantic, Python                |
-| AI                   | Gemini API                               |
-| Database             | Supabase (planned)                       |
-| Deployment (planned) | Vercel (frontend), Render (backend)      |
+| Layer                 | Tools                                                        |
+| ---------------------- | ------------------------------------------------------------- |
+| Frontend               | Vite, React, TypeScript, Tailwind CSS, React Router            |
+| Backend                | FastAPI, Pydantic, Python                                     |
+| AI                     | Groq API (Llama models)                                       |
+| Database               | Supabase (Postgres, Auth, Storage)                             |
+| Versioning              | Git / GitHub                                                   |
+| Deployment              | Vercel (frontend), Render (backend, planned)                    |
+| Project tracking         | Notion                                                         |
+| Team documentation        | Google Docs                                                    |
+| Content bank & docs       | Google Drive, Google Sheets                                     |
+| Content sourcing          | Kaggle, Wikimedia Commons                                        |
 
 ---
 
 ## Project Structure
 
 ```
-reflex-app/          Next.js frontend
-  app/
-    page.tsx           Home screen
-    practice-mode/      Practice Mode screen
-    think-pause/        Think-Pause screen (not started yet)
-  components/
-  data/
-  types/
-  lib/
+REFLEX/
+  reflex-app/          Vite + React frontend
+    src/
+      pages/
+        PracticeMode.tsx    Practice Mode screen
+        ThinkPause.tsx      Think-Pause screen
+      components/
+        Navbar.tsx
+        Toast.tsx
+    index.html
+    package.json
 
-reflex-backend/       FastAPI backend
+reflex-backend/         FastAPI backend
   main.py
   routers/
-    think_pause.py     Think-Pause /analyze endpoint
+    think_pause.py       Think-Pause /analyze endpoint
   requirements.txt
-  .env                 Not committed — see setup below
+  .env                   Not committed — see setup below
 ```
 
 ---
@@ -77,12 +83,12 @@ reflex-backend/       FastAPI backend
 ### Frontend (`reflex-app`)
 
 ```bash
-cd reflex-app
+cd REFLEX/reflex-app
 npm install
 npm run dev
 ```
 
-Runs on `http://localhost:3000`
+Runs on `http://localhost:5173` (Vite default)
 
 ### Backend (`reflex-backend`)
 
@@ -107,7 +113,7 @@ uvicorn main:app --reload
 
 Runs on `http://localhost:8000` — interactive docs available at `http://localhost:8000/docs`
 
-**Note:** the Gemini API key needs an associated Google Cloud account with a billing card on file to unlock the free tier quota (even if usage stays within free limits, Google requires a card for verification). Without it, requests to `/think-pause/analyze` will fail with a 429/500 quota error.
+**Note:** the backend originally used the Gemini API, but the team switched to the Groq API (Llama models) after running into a Gemini free-tier quota issue tied to billing account verification. Groq's free tier does not require a billing card, which made it a faster path to an unblocked, testable backend.
 
 ---
 
@@ -115,37 +121,34 @@ Runs on `http://localhost:8000` — interactive docs available at `http://localh
 
 ### Practice Mode — Done
 
-- Full game loop: content display, Real / AI-generated guess, feedback with technique + explanation, running score, end screen
-- Random content order on each playthrough
-- Graceful handling of broken images
-- Visual polish: header with logo, progress bar, icons, colored feedback border, custom feedback animation
-
-### Practice Mode — Not yet done
-
-- Real device / mobile testing
-- Supabase connection (progress currently stored in local React state only)
+- Full game loop: content display, real/AI-generated guess, manipulation-technique tagging, feedback with explanation, running score, end screen
+- Visual design with glassmorphism UI, ambient effects, progress bar, toast notifications
 
 ### Think-Pause — Done
 
-- System prompt designed and validated (multiple manual tests on Google AI Studio: text with manipulation signals, real image with no signal, ambiguous text, too-short text)
-- Backend endpoint `POST /think-pause/analyze` implemented, with defensive JSON parsing
-- CORS configured for frontend-backend communication
+- System prompt designed and iteratively validated (multiple manual tests: text with manipulation signals, real image with no signal, ambiguous text, too-short text, links requiring verification)
+- Prompt covers 7 manipulation categories: misleading_context, emotional_trigger, unreliable_source, fabricated_statistic, fabricated_quote, ai_generated, none
+- FastAPI endpoint `POST /think-pause/analyze` implemented, supporting both text and base64-encoded images, with defensive JSON parsing and structured `response_format`
+- Input validation: requests with neither text nor image are rejected with a clear error
 
-### Think-Pause — Not yet done
+### Database (Supabase) — Done
 
-- Frontend screen (text input, Analyze button, result display) — not started
-- End-to-end testing (currently blocked by Gemini API quota issue, see below)
-- Skill-badge connection with Practice Mode
+- Full schema implemented: `profiles`, `content_items`, `levels`, `level_content`, `game_attempts`, `skill_progress`, `think_pause_queries`, `badges`
+- Row Level Security policies configured so users can only access their own progress and queries
+- Content bank populated via CSV import from the team's tracking spreadsheet into `content_items`
 
-### Known issue
+### Not yet done / in progress
 
-Calling `/think-pause/analyze` currently returns a 500 error due to a Gemini API quota limit (`ResourceExhausted: 429, limit: 0`) on the available API keys. This is a billing/account configuration issue, not a code bug — the backend and prompt are ready to work as soon as a valid key with active quota is available.
+- Connecting the frontend to Supabase (currently the content bank import is being finalized; some entries were still being corrected for enum-value consistency at submission time)
+- Full skill-badge connection between Practice Mode and Think-Pause (schema is ready, frontend/backend wiring is the remaining step)
+- Deployment: frontend deploy via Vercel initiated; backend deploy via Render planned as a next step
+- Real device / mobile testing
 
 ---
 
 ## Validated Think-Pause Prompt
 
-The full system prompt sent to Gemini for content analysis lives in `reflex-backend/routers/think_pause.py`, as the `SYSTEM_PROMPT` constant. It defines 5 manipulation categories (misleading_context, emotional_trigger, unreliable_source, ai_generated, none), enforces a strict JSON response format, and includes explicit rules for confidence-level calibration and handling insufficient/ambiguous content.
+The full system prompt sent to the Groq API for content analysis lives in `reflex-backend/routers/think_pause.py`, as the `SYSTEM_PROMPT` constant. It defines 7 manipulation categories, enforces a strict JSON response format (confidence level, detected signals, explanation, reflective questions, and a link-verification flag), and includes explicit rules for confidence-level calibration and handling insufficient or ambiguous content.
 
 ---
 
@@ -153,17 +156,12 @@ The full system prompt sent to Gemini for content analysis lives in `reflex-back
 
 - **Deadline:** August 16, 2026, 23:59 (Paris time)
 - **Submission portal:** https://tally.so/r/MePkYk
+- **Repository:** https://github.com/REFLEX-HACKATHON/demo-repository/tree/ReflexApp
 - **Required:** project proposal (PDF/Word, max 10MB) + video pitch (max 3 min)
-- Late submissions and email submissions are not accepted.
 
 ---
 
-## Next Steps
-
-1. Unblock the Gemini API key (billing card or teammate's key)
-2. Build the Think-Pause frontend screen (can start with mocked data)
-3. Connect Think-Pause frontend to backend
-4. Implement the Practice Mode ↔ Think-Pause skill-badge connection
-5. Finalize team roles and complete team registration
-6. Complete the proposal document and record the pitch video
-7. Submit before the deadline
+## Next Steps (post-submission)
+3. Implement the Practice Mode <-> Think-Pause skill-badge connection end to end
+4. Complete backend deployment (Render) and link it to the deployed frontend
+5. Real device / mobile testing
