@@ -161,7 +161,7 @@ The full system prompt sent to the Groq API for content analysis lives in `refle
 
 ---
 
-## Next Steps (post-submission)
+## Next Steps
 3. Implement the Practice Mode <-> Think-Pause skill-badge connection end to end
 4. Complete backend deployment (Render) and link it to the deployed frontend
 5. Real device / mobile testing
