@@ -2,6 +2,7 @@
 
 **Pause. Question. Verify.**
 
+
 Submission for the **UNESCO Youth Hackathon 2026**  Track: **AI and MIL**
 
 ---
@@ -35,13 +36,23 @@ The two modules are connected: mastering a technique in Practice Mode unlocks a 
 ---
 
 ## Team
-
+main
 | Name   | Role                                                        |
 | ------ | ----------------------------------------------------------- |
 | Farida | Team Lead — Practice Mode integration, Think-Pause backend & AI integration, Content documentation (manipulation techniques, explanations) |
 | Gagan  | Practice Mode & Think-Pause frontend (Vite/React)            |
 | Marie  | Content bank (real/AI content, Supabase storage)              |
                                       
+ Updated upstream
+
+| Name   | Role                                                                                  |
+| ------ | ------------------------------------------------------------------------------------- |
+| Farida | Team Lead — Practice Mode (frontend) & Think-Pause (backend, AI integration)          |
+| Marie  | Co-Lead - Build the bank of real/AI content for Practice Mode                         |
+| Gagan  | Think_Pause frontend developemnt; Build the bank of real/AI content for Practice Mode |
+|  |
+Stashed changes
+Complete-Reflex-Application
 
 ---
 
@@ -171,6 +182,7 @@ The full system prompt sent to the Groq API for content analysis lives in `refle
 ---
 
 ## Next Steps (post-submission)
+ main
 
 3. Implement the Practice Mode <-> Think-Pause skill-badge connection end to end
 4. Complete backend deployment (Render) and link it to the deployed frontend
@@ -179,3 +191,8 @@ The full system prompt sent to the Groq API for content analysis lives in `refle
 Team
 
 Built for the UNESCO Youth Hackathon 2026.
+
+3. Implement the Practice Mode <-> Think-Pause skill-badge connection end to end
+4. Complete backend deployment (Render) and link it to the deployed frontend
+5. Real device / mobile testing
+ Complete-Reflex-Application
