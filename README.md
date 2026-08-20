@@ -29,12 +29,7 @@ The two modules are connected: mastering a technique in Practice Mode unlocks a 
 ## Team
 
 <<<<<<< Updated upstream
-| Name   | Role                                                        |
-| ------ | ----------------------------------------------------------- |
-| Farida | Team Lead — Practice Mode integration, Think-Pause backend & AI integration |
-| Gagan  | Practice Mode & Think-Pause frontend (Vite/React)            |
-| Marie  | Co-Lead - Content bank (real/AI content, Supabase storage)              |                            
-=======
+
 | Name   | Role                                                                                  |
 | ------ | ------------------------------------------------------------------------------------- |
 | Farida | Team Lead — Practice Mode (frontend) & Think-Pause (backend, AI integration)          |
