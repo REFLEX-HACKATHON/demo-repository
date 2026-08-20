@@ -2,13 +2,22 @@
 
 **Pause. Question. Verify.**
 
-Submission for the **UNESCO Youth Hackathon 2026** — Track: **AI and MIL**
+
+Submission for the **UNESCO Youth Hackathon 2026**  Track: **AI and MIL**
 
 ---
 
 ## What is Reflex
 
 Reflex is a web application that combines an interactive game with a practical AI-guided tool to help people build the habit of pausing and verifying information before trusting or sharing it. Rather than detecting misinformation on the user's behalf, it trains a lasting behavioral reflex: the instinct to doubt and verify.
+
+Problem statement
+
+Misinformation and manipulated content spread today at an unprecedented speed across social media and messaging apps like WhatsApp, Facebook, or TikTok. An alarming message, an image taken out of context, or a false claim can reach thousands of people within minutes, long before anyone has had the chance to verify it.
+
+This phenomenon particularly affects young people, who are both the most active users of these platforms and the least often trained to critically evaluate what they see and share. The problem is compounded by the rise of AI-generated content — synthetic images, videos, or testimonials that have become so realistic they are increasingly difficult to distinguish from authentic content, even for a careful eye.
+
+Reflex addresses this by teaching a simple, repeatable reflex: pause before reacting, question what you see, and verify before sharing.
 
 The product is built around two connected components:
 
@@ -27,8 +36,14 @@ The two modules are connected: mastering a technique in Practice Mode unlocks a 
 ---
 
 ## Team
-
-<<<<<<< Updated upstream
+main
+| Name   | Role                                                        |
+| ------ | ----------------------------------------------------------- |
+| Farida | Team Lead — Practice Mode integration, Think-Pause backend & AI integration, Content documentation (manipulation techniques, explanations) |
+| Gagan  | Practice Mode & Think-Pause frontend (Vite/React)            |
+| Marie  | Content bank (real/AI content, Supabase storage)              |
+                                      
+ Updated upstream
 
 | Name   | Role                                                                                  |
 | ------ | ------------------------------------------------------------------------------------- |
@@ -36,7 +51,8 @@ The two modules are connected: mastering a technique in Practice Mode unlocks a 
 | Marie  | Co-Lead - Build the bank of real/AI content for Practice Mode                         |
 | Gagan  | Think_Pause frontend developemnt; Build the bank of real/AI content for Practice Mode |
 |  |
->>>>>>> Stashed changes
+Stashed changes
+Complete-Reflex-Application
 
 ---
 
@@ -166,6 +182,17 @@ The full system prompt sent to the Groq API for content analysis lives in `refle
 ---
 
 ## Next Steps (post-submission)
+ main
+
 3. Implement the Practice Mode <-> Think-Pause skill-badge connection end to end
 4. Complete backend deployment (Render) and link it to the deployed frontend
 5. Real device / mobile testing
+
+Team
+
+Built for the UNESCO Youth Hackathon 2026.
+
+3. Implement the Practice Mode <-> Think-Pause skill-badge connection end to end
+4. Complete backend deployment (Render) and link it to the deployed frontend
+5. Real device / mobile testing
+ Complete-Reflex-Application
