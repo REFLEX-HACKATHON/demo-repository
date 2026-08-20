@@ -11,7 +11,7 @@ Submission for the **UNESCO Youth Hackathon 2026**  Track: **AI and MIL**
 
 Reflex is a web application that combines an interactive game with a practical AI-guided tool to help people build the habit of pausing and verifying information before trusting or sharing it. Rather than detecting misinformation on the user's behalf, it trains a lasting behavioral reflex: the instinct to doubt and verify.
 
-Problem statement
+**Problem statement:**
 
 Misinformation and manipulated content spread today at an unprecedented speed across social media and messaging apps like WhatsApp, Facebook, or TikTok. An alarming message, an image taken out of context, or a false claim can reach thousands of people within minutes, long before anyone has had the chance to verify it.
 
@@ -27,9 +27,9 @@ An interactive puzzle-game where users are shown a mix of real and AI-generated 
 
 ### Think-Pause
 
-A practical, AI-guided tool where users paste a real message, post, or AI response they've encountered, and receive a guided evaluation using the same manipulation-technique categories learned in Practice Mode. It never gives a blunt true/false verdict — instead, it returns a confidence level, detected signals, a neutral explanation, and reflective questions.
+A practical, AI-guided tool where users paste a real message, post, or AI response they've encountered, and receive a guided evaluation using the same manipulation-technique categories learned in Practice Mode. It never gives a blunt true/false verdict instead, it returns a confidence level, detected signals, a neutral explanation, and reflective questions.
 
-The two modules are connected: mastering a technique in Practice Mode unlocks a visible skill badge, which Think-Pause recognizes when that same technique appears in a real message — making the game's progress tangibly useful rather than an abstract score.
+The two modules are connected: mastering a technique in Practice Mode unlocks a visible skill badge, which Think-Pause recognizes when that same technique appears in a real message making the game's progress tangibly useful rather than an abstract score.
 
 **Scope for this MVP:** text and image content only (no video analysis).
 
@@ -39,20 +39,11 @@ The two modules are connected: mastering a technique in Practice Mode unlocks a 
 main
 | Name   | Role                                                        |
 | ------ | ----------------------------------------------------------- |
-| Farida | Team Lead — Practice Mode integration, Think-Pause backend & AI integration, Content documentation (manipulation techniques, explanations) |
+| Farida | Team Lead, Practice Mode integration, Think-Pause backend & AI integration, Content documentation (manipulation techniques, explanations) |
 | Gagan  | Practice Mode & Think-Pause frontend (Vite/React)            |
-| Marie  | Content bank (real/AI content, Supabase storage)              |
+| Marie  | Co-Lead. Content bank (real/AI content, Supabase storage)              |
                                       
- Updated upstream
-
-| Name   | Role                                                                                  |
-| ------ | ------------------------------------------------------------------------------------- |
-| Farida | Team Lead — Practice Mode (frontend) & Think-Pause (backend, AI integration)          |
-| Marie  | Co-Lead - Build the bank of real/AI content for Practice Mode                         |
-| Gagan  | Think_Pause frontend developemnt; Build the bank of real/AI content for Practice Mode |
-|  |
-Stashed changes
-Complete-Reflex-Application
+ 
 
 ---
 
@@ -182,17 +173,12 @@ The full system prompt sent to the Groq API for content analysis lives in `refle
 ---
 
 ## Next Steps (post-submission)
- main
 
 3. Implement the Practice Mode <-> Think-Pause skill-badge connection end to end
 4. Complete backend deployment (Render) and link it to the deployed frontend
 5. Real device / mobile testing
 
-Team
 
-Built for the UNESCO Youth Hackathon 2026.
+***Built for the UNESCO Youth Hackathon 2026.***
 
-3. Implement the Practice Mode <-> Think-Pause skill-badge connection end to end
-4. Complete backend deployment (Render) and link it to the deployed frontend
-5. Real device / mobile testing
- Complete-Reflex-Application
+
